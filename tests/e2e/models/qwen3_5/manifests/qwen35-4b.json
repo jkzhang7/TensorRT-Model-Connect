@@ -1,0 +1,30 @@
+{
+  "name": "qwen35-4b",
+  "hf_id": "Qwen/Qwen3.5-4B",
+  "hf_revision": "851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "bundle": "qwen35-4b.bundle",
+  "family": "qwen3_5",
+  "runtime_strategy": "qwen3_5_hybrid_mamba_attention",
+  "task_strategy": "text_generation_causal",
+  "e2e_parallel_resource": "exclusive_gpu",
+  "max_cache_length": 256,
+  "trust_remote_code": true,
+  "precision": "fp16",
+  "testcases": [
+    {
+      "name": "qwen35-4b",
+      "trace_id": "IT-E2E-Q35-02",
+      "reference_family": "multimodal_chat_qwen35",
+      "user_contract": "chat_response",
+      "prompt": "What is the capital of France? Answer in one word.",
+      "max_new_tokens": 10,
+      "reference_precision": "fp32",
+      "runtime_config": {
+        "runtime": {
+          "disable_cuda_graph": true
+        }
+      },
+      "notes": "Qwen3.5-4B shares the Qwen3.5 architecture and the qwen3_5_hybrid_mamba_attention runtime strategy with the existing 9B profile, and adds a single-GPU configuration that fits 24 GB-class devices. The case passes on the shared text_generation_causal threshold defaults, so this manifest declares no threshold overrides. CUDA graphs stay disabled to match the sibling 9B case; the graph-enabled variant was not measured."
+    }
+  ]
+}
