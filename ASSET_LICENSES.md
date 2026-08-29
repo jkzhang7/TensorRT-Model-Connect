@@ -130,8 +130,14 @@ the FLAC SHA-256 is
 
 ## LibriSpeech accuracy fixture
 
-`tests/e2e/models/whisper/data/librispeech-test-clean-6930-75918-0003.wav`
-is utterance `6930-75918-0003` from the LibriSpeech `test-clean` split,
+Byte-identical copies are stored at:
+
+- `tests/e2e/models/glmasr/data/librispeech-test-clean-6930-75918-0003.wav`
+- `tests/e2e/models/whisper/data/librispeech-test-clean-6930-75918-0003.wav`
+
+SHA-256: `166d138dc95c706e4eedbebb48f4ac4c8cb1b77ea796c0bc650da518308657e2`
+
+Each is utterance `6930-75918-0003` from the LibriSpeech `test-clean` split,
 distributed by OpenSLR as SLR12 under the Creative Commons Attribution 4.0
 International license. LibriSpeech was prepared by Vassil Panayotov with the
 assistance of Daniel Povey and is derived from LibriVox public-domain

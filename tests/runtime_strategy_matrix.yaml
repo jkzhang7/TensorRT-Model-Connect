@@ -67,7 +67,8 @@
     "patchtsmixer_trt",
     "timesfm_trt",
     "chronos_bolt_trt",
-    "diffusion_wan2_2_ti2v"
+    "diffusion_wan2_2_ti2v",
+    "glmasr_speech_to_text"
   ],
   "runtime_strategies": {
     "qwen_decoder_kv_cache": {
@@ -1148,6 +1149,17 @@
       "diff_framework_check_classes": [],
       "diff_framework_exemption": "No diff_framework check currently registers runtime_strategies=['torchtrt_diffusion'].",
       "performance_mode": "diffusion"
+    },
+    "glmasr_speech_to_text": {
+      "task_strategy": "speech_to_text",
+      "cli_commands": [
+        "transcribe"
+      ],
+      "runner_class": "runner.GlmAsrSpeechToTextRunner",
+      "comparator_class": "speech_to_text.SpeechToTextComparator",
+      "diff_framework_check_classes": [],
+      "diff_framework_exemption": "No diff_framework check currently registers runtime_strategies=['glmasr_speech_to_text'].",
+      "performance_mode": "enc_dec"
     }
   }
 }
