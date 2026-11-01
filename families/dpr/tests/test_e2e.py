@@ -270,7 +270,7 @@ def _official_reference(model_dir: Path, manifest: dict, case: dict, tmp_path: P
     encoded = {key: value.to(device) for key, value in encoded.items()}
     with torch.no_grad():
         outputs = model(**encoded)
-    assert task == "encoding"
+    assert task == "text_to_pooled_features"
     return {"values": outputs.last_hidden_state[0, 0].float().cpu().numpy()}
 
 
@@ -285,7 +285,7 @@ def _assert_parity(actual, expected, manifest: dict, case: dict, thresholds: dic
 
 
 def test_dpr_cases_keep_the_encoder_only_cls_contract() -> None:
-    assert all(manifest["task"] == "encoding" for _path, manifest, _case in CASES.values())
+    assert all(manifest["task"] == "text_to_pooled_features" for _path, manifest, _case in CASES.values())
 
 
 def _assert_sdk_consumers(runtime_root: Path, bundle: Path, case: dict, expected_dim: int) -> None:
